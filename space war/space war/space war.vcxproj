@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9378d76b-3d4c-4d49-b00e-a808df3eabfc}</ProjectGuid>
-    <RootNamespace>FirstGameEngine</RootNamespace>
+    <ProjectGuid>{9b65378a-2321-4346-a450-c21f0ae366da}</ProjectGuid>
+    <RootNamespace>spacewar</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -145,11 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FirstGameEngine.cpp" />
-    <ClCompile Include="Menu.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Menu.h" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,8 +1,10 @@
 ﻿#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
 #include <ctime>
+#include "Menu.h"
 using namespace sf;
 using namespace std;
 
@@ -13,6 +15,7 @@ void Mix(int** field, int x = 4, int y = 4);
 int main()
 {
     RenderWindow windows(VideoMode(256, 256), "Puzzel");
+	menu(windows);
 	/*RectangleShape button;
 	button.setSize(Vector2f(50, 80));
 	button.setFillColor(Color(0, 255, 0));
@@ -20,7 +23,12 @@ int main()
 	windows.setFramerateLimit(60);
 	Texture texture;
 	texture.loadFromFile("D:/projects/FirstGameEngine/image/00150.jpg");
-
+	SoundBuffer buffer;
+	buffer.loadFromFile("D:/audio/001.wav");
+	Sound sound;
+	sound.setBuffer(buffer);
+	Music music;
+	music.openFromFile("D:/audio/001.wav");
 	int block = 64;
 	int** field = new int*[6];
 	for (int i = 0; i < 6; i++) {
@@ -28,7 +36,7 @@ int main()
 	}
 	Sprite sprite[17];
 	Fill(field, sprite, texture, block);
-	//Mix(field, 4, 4);
+	Mix(field, 4, 4);
 	
 	while (windows.isOpen())
 	{
@@ -64,7 +72,11 @@ int main()
 						windows.draw(sprite[16]);
 						windows.draw(sprite[temp]);
 						windows.display();
+						/*sound.play();
+						music.play();*/
 					}
+					sound.play();
+					//music.play();
 				}
 			}
 		}
@@ -108,12 +120,12 @@ void Mix(int** field, int x, int y)
 	srand(time(0));
 	for (int i = 0; i < 500; i++)
 	{
-		switch (rand() % 4)
+		switch (1 + rand() % 5)
 		{
-		case 0: if (x == 0)break; swap(field[x][y], field[x - 1][y]); x--; break;
-		case 1:	if (x == 3)break; swap(field[x][y], field[x + 1][y]); x++; break;
-		case 2:	if (y == 0)break; swap(field[x][y], field[x][y - 1]); y--; break;
-		case 3:	if (y == 3)break; swap(field[x][y], field[x][y + 1]); y++; break;
+		case 1: if (x == 1)break; swap(field[x][y], field[x - 1][y]); x--; break;
+		case 2:	if (x == 4)break; swap(field[x][y], field[x + 1][y]); x++; break;
+		case 3:	if (y == 1)break; swap(field[x][y], field[x][y - 1]); y--; break;
+		case 4:	if (y == 4)break; swap(field[x][y], field[x][y + 1]); y++; break;
 		}
 	}
 }
