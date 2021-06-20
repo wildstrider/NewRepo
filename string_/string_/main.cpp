@@ -13,22 +13,27 @@ public:
      char* GetStr() { return str; }
 
 	void Setsize(int size) { this->size = size; }
-   explicit	String(unsigned int size = 80) { this->size = size; this->str = new char[size] {}; cout << "defconstructor\t" << this << endl; }
-	String (const char str[])
+   explicit	String(unsigned int size = 80): size(size), str(new char[size]{})
+   { 
+	  // this->size = size;
+	  // this->str = new char[size] {};
+	   cout << "defconstructor\t" << this << endl;
+   }
+	String (const char str[]):size(strlen(str) + 1), str(new char[size] {})
 	{
-		this->size = strlen(str) + 1;
-		this->str = new char[size] {};
+		//this->size = strlen(str) + 1;
+		//this->str = new char[size] {};
 		for (int i = 0; str[i]; i++) { this->str[i] = str[i]; }
 		cout << "constractor\t" << this << endl;
 	}
-	String(String& other)
+	String(String& other): size(other.size), str(new char[size] {})
 	{
-		this->size = other.size;
-		this->str = new char[size] {};
+		//this->size = other.size;
+		//this->str = new char[size] {};
 		for (int i = 0; i < size; i++) { this->str[i] = other.str[i]; }
 		cout << "CopyConstructor:\t" << this << endl;
 	}
-	String& operator=(const String& other)
+	String& operator=(const String& other)// : size(other.) список инициализации можно использовать только в крнструкторах
 	{
 
 		if (this == &other) return *this;
@@ -41,14 +46,14 @@ public:
 	}
 	const  char& operator[](unsigned int i) const { return str[i]; }
 	char& operator[](unsigned int i) { return str[i]; }
-	String(String&& other) 
+	String(String&& other) : size(other.size), str(other.str)
 	{
 		// должен работать так как не должен работать констрактор
 		// должен выполнять deepcopy а moveconts 
 		//moveconst не должен выделять динамическую память
 		//он использует память другого обьекта и передает ее создаваемому обьекту.
-		this->size = other.size;
-		this->str = other.str;
+		//this->size = other.size;
+		//this->str = other.str;
 		other.str = nullptr;
 		cout << "moveconstructor:\t" << this << endl;
 	}
@@ -83,7 +88,7 @@ String operator+(const String& left, const String& right)
 }
 //istream& operator>>(istream& in, String& other) { cout << "Введите строку: "; return  in >> other.GetStr(); }
 //#define CONSTRUCTORS_CHECK
-//#define OPERATOR_PLUS_CHECK
+#define OPERATOR_PLUS_CHECK
 
 
 int main()
@@ -107,7 +112,7 @@ cin >> str;
 cout << str << endl;*/
 	String str1 = "hello";
 	String str2 = "world";
-	String str3;
+	String str3 = str1;
 	cout << delimiter << endl;
 	str3 = str1 + str2;
 	cout << delimiter << endl;
