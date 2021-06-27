@@ -8,69 +8,96 @@ class String
 	unsigned int size;
 	char* str;
 public:
-	const char* GetStr() const { return str; }
-	unsigned int Getsize()const { return size; }
-     char* GetStr() { return str; }
+	const char* GetStr() const;
+	unsigned int Getsize()const;
+	char* GetStr();
 
-	void Setsize(int size) { this->size = size; }
-   explicit	String(unsigned int size = 80) { this->size = size; this->str = new char[size] {}; cout << "defconstructor\t" << this << endl; }
-	String (const char str[])
-	{
-		this->size = strlen(str) + 1;
-		this->str = new char[size] {};
-		for (int i = 0; str[i]; i++) { this->str[i] = str[i]; }
-		cout << "constractor\t" << this << endl;
-	}
-	String(String& other)
-	{
-		this->size = other.size;
-		this->str = new char[size] {};
-		for (int i = 0; i < size; i++) { this->str[i] = other.str[i]; }
-		cout << "CopyConstructor:\t" << this << endl;
-	}
-	String& operator=(const String& other)
-	{
+	void Setsize(int size);
+	explicit String(unsigned int size = 80);
+	String(const char str[]);
+	String(String& other);
+	String& operator=(const String& other);
+	
+	const  char& operator[](unsigned int i) const;
+	char& operator[](unsigned int i);
+	String(String&& other);
+	
+	String& operator=(String&& other);
+	
+	String& operator+=(const String& other);
 
-		if (this == &other) return *this;
-		delete[] this->str;
-		this->size = other.size;
-		this->str = new char[size] {};
-		for (int i = 0; i < size; i++) { this->str[i] = other.str[i]; }
-		cout << "CopyAssignment:\t" << this << endl;
-		return *this;
-	}
-	const  char& operator[](unsigned int i) const { return str[i]; }
-	char& operator[](unsigned int i) { return str[i]; }
-	String(String&& other) 
-	{
-		// должен работать так как не должен работать констрактор
-		// должен выполнять deepcopy а moveconts 
-		//moveconst не должен выделять динамическую память
-		//он использует память другого обьекта и передает ее создаваемому обьекту.
-		this->size = other.size;
-		this->str = other.str;
-		other.str = nullptr;
-		cout << "moveconstructor:\t" << this << endl;
-	}
-	String& operator=(String&& other)
-	{
-		delete[] str;
-		this->size = other.size;
-		this->str = other.str;
-		other.str = nullptr;
-		cout << "moveassigment: " << this << endl;
-		return *this;
-	}
-	String& operator+=(const String& other) { return *this = *this + other; }
-
-	~String() { delete[] this->str; cout << "dectructor\t" << this << endl; }
-	void print() const
-	{
-		cout << "size: " << size << endl;
-		cout << "str: " << str << endl;
-	}
+	~String();
+	void print() const;
 	friend String operator+(const String& left, const String& right);
 };
+
+const char* String::GetStr() const { return str; }
+unsigned int String::Getsize()const { return size; }
+char* String::GetStr() { return str; }
+
+void String::Setsize(int size) { this->size = size; }
+ explicit String::String(unsigned int size = 80) : size(size), str(new char[size] {})
+{
+	// this->size = size; 
+	// this->str = new char[size] {}; 
+	cout << "defconstructor\t" << this << endl;
+}
+String::String(const char str[]) : String(strlen(str) + 1)
+{
+
+	for (int i = 0; str[i]; i++) { this->str[i] = str[i]; }
+	cout << "constractor\t" << this << endl;
+}
+String::String(String& other) : String(other.str)
+{
+	/*this->size = other.size;
+	this->str = new char[size] {};
+	for (int i = 0; i < size; i++) { this->str[i] = other.str[i]; }*/
+	cout << "CopyConstructor:\t" << this << endl;
+}
+String& String::operator=(const String& other)
+{
+
+	if (this == &other) return *this;
+	delete[] this->str;
+	this->size = other.size;
+	this->str = new char[size] {};
+	for (int i = 0; i < size; i++) { this->str[i] = other.str[i]; }
+	cout << "CopyAssignment:\t" << this << endl;
+	return *this;
+}
+const  char& String::operator[](unsigned int i) const { return str[i]; }
+char& String::operator[](unsigned int i) { return str[i]; }
+String::String(String&& other)
+{
+	// должен работать так как не должен работать констрактор
+	// должен выполнять deepcopy а moveconts 
+	//moveconst не должен выделять динамическую память
+	//он использует память другого обьекта и передает ее создаваемому обьекту.
+	this->size = other.size;
+	this->str = other.str;
+	other.str = nullptr;
+	cout << "moveconstructor:\t" << this << endl;
+}
+String& String::operator=(String&& other)
+{
+	delete[] str;
+	this->size = other.size;
+	this->str = other.str;
+	other.str = nullptr;
+	cout << "moveassigment: " << this << endl;
+	return *this;
+}
+String& String::operator+=(const String& other) { return *this = *this + other; }
+
+String::~String() { delete[] this->str; cout << "dectructor\t" << this << endl; }
+void String::print() const
+{
+	cout << "size: " << size << endl;
+	cout << "str: " << str << endl;
+}
+//friend String operator+(const String& left, const String& right);
+
 
 ostream& operator<<(ostream& os, const String& obj) { return os << obj.GetStr(); }
 String operator+(const String& left, const String& right)
@@ -83,7 +110,7 @@ String operator+(const String& left, const String& right)
 }
 //istream& operator>>(istream& in, String& other) { cout << "Введите строку: "; return  in >> other.GetStr(); }
 //#define CONSTRUCTORS_CHECK
-//#define OPERATOR_PLUS_CHECK
+#define OPERATOR_PLUS_CHECK
 
 
 int main()
@@ -107,7 +134,7 @@ cin >> str;
 cout << str << endl;*/
 	String str1 = "hello";
 	String str2 = "world";
-	String str3;
+	String str3 = str1;
 	cout << delimiter << endl;
 	str3 = str1 + str2;
 	cout << delimiter << endl;
