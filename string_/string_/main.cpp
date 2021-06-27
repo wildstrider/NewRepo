@@ -36,7 +36,7 @@ unsigned int String::Getsize()const { return size; }
 char* String::GetStr() { return str; }
 
 void String::Setsize(int size) { this->size = size; }
- explicit String::String(unsigned int size = 80) : size(size), str(new char[size] {})
+String::String(unsigned int size) : size(size), str(new char[size] {})
 {
 	// this->size = size; 
 	// this->str = new char[size] {}; 
