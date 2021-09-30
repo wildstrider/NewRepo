@@ -68,7 +68,11 @@ void String::print() const
 //friend String operator+(const String& left, const String& right);
 
 
-ostream& operator<<(ostream& os, const String& obj) { return os << obj.GetStr(); }
+ostream& operator<<(ostream& os, const String& obj)
+{
+	cout << typeid(os.rdbuf()->getloc()).name << endl;
+	return os << obj.GetStr(); 
+}
 String operator+(const String& left, const String& right)
 {
 	int s = 0;
@@ -77,4 +81,9 @@ String operator+(const String& left, const String& right)
 	for (int i = 0; i < temp.Getsize(); i++) { (i < left.Getsize() - 1) ? temp[i] = left[i] : temp[i] = right[s++]; }
 	return temp;
 }
-istream& operator>>(istream& in, String& other) { cout << "¬ведите строку: "; return  in >> other.GetStr(); }
+istream& operator>>(istream& in, String& other)
+{ 
+	//cout << typeid(in.rdbuf()->getloc()).name() << endl;
+	//cout << "¬ведите строку: ";
+	return  in >> other.GetStr();
+}

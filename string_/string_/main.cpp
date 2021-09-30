@@ -1,7 +1,5 @@
 #include "String.h"
 
-
-//istream& operator>>(istream& in, String& other) { cout << "¬ведите строку: "; return  in >> other.GetStr(); }
 //#define CONSTRUCTORS_CHECK
 #define OPERATOR_PLUS_CHECK
 
@@ -25,15 +23,15 @@ int main()
 	/*String str;
 cin >> str;
 cout << str << endl;*/
-	String str1 = "hello";
-	String str2 = "world";
-	String str3 = str1;
-	cout << delimiter << endl;
-	str3 = str1 + str2;
-	cout << delimiter << endl;
-	cout << "str3: " << str3 << endl;
-	//str1 += str2;
-	cout << "str1: " << (str1 += str2) << endl;
+	//String str1 = "hello";
+	//String str2 = "world";
+	//String str3 = str1;
+	//cout << delimiter << endl;
+	//str3 = str1 + str2;
+	//cout << delimiter << endl;
+	//cout << "str3: " << str3 << endl;
+	////str1 += str2;
+	//cout << "str1: " << (str1 += str2) << endl;
 #endif // OPERATOR_PLUS_CHECK
 	//String str1; // defalt constructor
 	//String str2 = "hello"; // single argument constructor
