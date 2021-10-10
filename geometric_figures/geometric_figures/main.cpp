@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 #include <string>
 
 #include "Rectangle.h"
@@ -10,28 +10,28 @@
 
 int main()
 {
-	// 1. Прямоугольник
+	// 1. РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
 	Rectangle rect(3, 4, "ABCD");
 
 	rect.displayRect();
 	rect.set_ab(3.5, 5.6);
 	rect.displayRect();
 
-	// 2. Окружность
+	// 2. РћРєСЂСѓР¶РЅРѕСЃС‚СЊ
 	Circle circle(3, "O");
 	circle.displayCircle();
 	circle.setR(9);
 	circle.displayCircle();
 
-	// 3. Треугольник
+	// 3. РўСЂРµСѓРіРѕР»СЊРЅРёРє
 	Triangle tr(3, 4, 5, "ABC");
 	tr.displayTrgl();
 
-	// 4. Трапеция
+	// 4. РўСЂР°РїРµС†РёСЏ
 	Trapezoid trap(4, 8, 5, 3, "Trapezoid");
 	trap.TrapezoidDisplay();
 
-	// 5. Ромб
+	// 5. Р РѕРјР±
 	Rhombus rhom(5, 3, "rhombus");
 	rhom.DisplayRhombus();
 
