@@ -1,11 +1,11 @@
-#pragma once
+п»ї#pragma once
 #include "Figures.h"
 
 class Rhombus : Figures
 {
 private:
-	double a; // сторона ромба
-	double h; //высота ромба
+	double a; // СЃС‚РѕСЂРѕРЅР° СЂРѕРјР±Р°
+	double h; //РІС‹СЃРѕС‚Р° СЂРѕРјР±Р°
 public:
 	Rhombus(double a, double h, string name): a{a}, h{h}
 	{

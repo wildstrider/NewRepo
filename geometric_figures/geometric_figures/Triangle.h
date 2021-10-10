@@ -1,14 +1,14 @@
-#pragma once
+п»ї#pragma once
 #include "Figures.h"
 class Triangle :
     public Figures
 {
 private:
-    // стороны треугольника
+    // СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
     double a;
     double b;
     double c;
-    // углы треугольника
+    // СѓРіР»С‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
     double ab;
     double bc;
     double ac;
@@ -40,7 +40,7 @@ public:
     // 
     void displayTrgl();
 
-    // метод получения угла между сторонами first и second
+    // РјРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ СѓРіР»Р° РјРµР¶РґСѓ СЃС‚РѕСЂРѕРЅР°РјРё first Рё second
     static const double pi;
     static double RadToDeg(double in_radian);
     static double getCornerBetweenTwoEdges(double first, double second, double third);

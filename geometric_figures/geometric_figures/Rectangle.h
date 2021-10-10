@@ -1,10 +1,10 @@
-#pragma once
+п»ї#pragma once
 #include "Figures.h"
 class Rectangle :
     public Figures
 {
 private:
-    double a; // стороны прямоугольника
+    double a; // СЃС‚РѕСЂРѕРЅС‹ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
     double b;
 
 public:

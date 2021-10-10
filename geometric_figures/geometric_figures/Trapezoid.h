@@ -1,13 +1,13 @@
-#pragma once
+п»ї#pragma once
 #include "Figures.h"
 
 class Trapezoid : Figures
 {
 private:
-	double a; // основания трапеции
+	double a; // РѕСЃРЅРѕРІР°РЅРёСЏ С‚СЂР°РїРµС†РёРё
 	double b;
-	double c; // равные стороны
-	double h; // выстота
+	double c; // СЂР°РІРЅС‹Рµ СЃС‚РѕСЂРѕРЅС‹
+	double h; // РІС‹СЃС‚РѕС‚Р°
 public:
 	Trapezoid(double a, double b, double c, double h, string name) : a{ a }, b{ b }, c{ c }, h{ h }
 	{

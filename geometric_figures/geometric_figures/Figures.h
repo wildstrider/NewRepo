@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <iostream>
 
@@ -8,9 +8,9 @@ class Figures
 {
 protected:
 	string name;
-	double P; // периметр
-	double S; // площадь
-	int cornerCount; // кол-во углов
+	double P; // РїРµСЂРёРјРµС‚СЂ
+	double S; // РїР»РѕС‰Р°РґСЊ
+	int cornerCount; // РєРѕР»-РІРѕ СѓРіР»РѕРІ
 
 public:
 	Figures(double P, double S, int cornerCount, string name) :
