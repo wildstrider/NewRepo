@@ -4,7 +4,7 @@
 class Circle :
 	public Figures 
 {
-private:
+protected:
 	double R;
 	const double pi = 3.14;
 
